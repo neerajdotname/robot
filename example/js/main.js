@@ -1,5 +1,7 @@
 var makeExample = function(nr, code, options) {
+
 	var editor, example = new window.jsdares.robot.ProgramApplet($('.robot-example-' + nr), options);
+
 	var update = function() {
 		var func = null;
 		try {
@@ -7,20 +9,22 @@ var makeExample = function(nr, code, options) {
 			if (func) example.setProgram(func);
 		} catch(e) {}
 	};
+
 	editor = new CodeMirror($('.robot-example-' + nr + '-editor')[0], {
 		value: code,
 		onChange: update
 	});
+
 	update();
 };
 
-var text =  'robot.drive(1);\n' +
-            'robot.turnRight();\n' +
-            'robot.drive(2);\n'+
-            'robot.turnLeft();\n' +
-            'robot.drive(2);\n'+
-            'robot.turnLeft();\n' +
-            'robot.drive(3);' ;
+var text =  'robot.drive(1)\n' +
+            'robot.turnRight()\n' +
+            'robot.drive(2)\n'+
+            'robot.turnLeft()\n' +
+            'robot.drive(2)\n'+
+            'robot.turnLeft()\n' +
+            'robot.drive(3)' ;
 
 var state = { "columns": 5,
               "rows":5,
