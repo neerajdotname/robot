@@ -1,4 +1,4 @@
-var state = { "columns":8,
+var state = {   "columns":8,
                 "rows":8,
                 "initialX":3,
                 "initialY":4,
@@ -38,7 +38,7 @@ var state = { "columns":8,
 
 var _state = JSON.stringify(state);
 
-var exampleTop = new window.jsdares.robot.ProgramApplet($('.robot-example-top'), {readOnly: false, blockSize: 64, state: _state });
+var exampleTop = new window.jsdares.robot.ProgramApplet( $('.robot-example-top'), { readOnly: false, blockSize: 64, state: _state });
 
 
 exampleTop.setProgram(function (robot) {
