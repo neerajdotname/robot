@@ -9,7 +9,7 @@ module.exports = function(robot) {
 
 			if (options.state) this.applet.setState(options.state);
 			else this.applet.initialState(options);
-			
+
 			this.program = function() {};
 			this.applet.setStateChangeCallback(this.run.bind(this));
 			this.run();
