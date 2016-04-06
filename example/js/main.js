@@ -16,7 +16,38 @@ var makeExample = function(nr, code, options) {
 
 var text = 'robot.drive(1);\nrobot.turnRight();\nrobot.drive(2);\nrobot.turnLeft();\nrobot.drive(2);\nrobot.turnLeft();\nrobot.drive(3);' ;
 
-makeExample(1, text, {readOnly: false, blockSize: 48, state: '{"columns":5,"rows":5,"initialX":2,"initialY":4,"initialAngle":90,"mazeObjects":5,"verticalActive":[[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]],"horizontalActive":[[false,false,false,true,false],[false,false,false,true,false],[false,false,false,true,false],[false,false,false,true,false],[false,false,false,false,false]],"blockGoal":[[false,false,false,false,false],[false,true,false,false,false],[false,false,false,false,false],[false,false,false,false,false],[false,false,false,false,false]]}'});
+var state = { "columns": 5,
+              "rows":5,
+              "initialX":2,
+              "initialY":4,
+              "initialAngle":90,
+              "mazeObjects":5,
+              "verticalActive":[
+                [false,false,false,false,false],
+                [false,false,false,false,false],
+                [false,false,false,false,false],
+                [false,false,false,false,false],
+                [false,false,false,false,false]
+              ],
+              "horizontalActive":[
+                [false,false,false,true,false],
+                [false,false,false,true,false],
+                [false,false,false,true,false],
+                [false,false,false,true,false],
+                [false,false,false,false,false]
+              ],
+              "blockGoal":[
+                [false,false,false,false,false],
+                [false,true,false,false,false],
+                [false,false,false,false,false],
+                [false,false,false,false,false],
+                [false,false,false,false,false]
+              ]
+};
+
+var _state = JSON.stringify(state);
+
+makeExample(1, text, { readOnly: false, blockSize: 48, state: _state });
 
 
 
