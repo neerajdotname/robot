@@ -2,7 +2,9 @@
 "use strict";
 
 module.exports = function(robot) {
+
 	robot.ProgramApplet = function() { return this.init.apply(this, arguments); };
+
 	robot.ProgramApplet.prototype = {
 		init: function($container, options) {
 			this.applet = new robot.Applet($container, options);
