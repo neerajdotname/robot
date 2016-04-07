@@ -6,7 +6,9 @@ var makeExample = function(nr, code, options) {
 		var func = null;
 		try {
 			func = eval('(function (robot) { ' + editor.getValue() + '});');
-			if (func) example.setProgram(func);
+			if (func) {
+        example.setProgram(func);
+      }
 		} catch(e) {}
 	};
 
