@@ -1,6 +1,7 @@
 /*jshint node:true jquery:true*/
 "use strict";
 
+
 module.exports = function(robot) {
 	robot.Robot = function() { return this.init.apply(this, arguments); };
 	robot.Robot.prototype = {
@@ -14,38 +15,56 @@ module.exports = function(robot) {
 		},
 
 		primitiveDrive: function(name, args, forward) {
+      console.log("name", name);
+      console.log("args", args);
+      console.log("forward", forward);
 			var goals = null, fromX = this.robotX, fromY = this.robotY;
+
 			try {
 				var amount = 1;
 				if (args[0] !== undefined) {
 					amount = args[0];
 				}
+
 				if (!forward) amount = -amount;
 
 				if (args.length > 1) {
 					throw '<var>' + name + '</var> accepts no more than <var>1</var> argument';
+
 				} else if (typeof amount !== 'number' || !isFinite(amount)) {
 					throw 'Argument has to be a valid number';
+
 				} else if (Math.round(amount) !== amount && this.state.mazeObjects > 0) {
 					throw 'Fractional amounts are only allowed when the maze is empty';
+
 				} else if (amount !== 0) {
+
 					if (this.state.mazeObjects > 0) {
 						var positive = amount > 0;
 
 						for (var i=0; i<Math.abs(amount); i++) {
-							if (this.primitiveIsWall(this.robotX, this.robotY, positive ? this.robotAngle : (this.robotAngle + 180)%360)) {
+
+							var _positive = positive ? this.robotAngle : (this.robotAngle + 180)%360;
+
+							if (this.primitiveIsWall(this.robotX, this.robotY, _positive)) {
 								throw 'Robot ran into a wall';
 							}
+
 							if (this.robotAngle === 0) {
 								this.robotX += (positive ? 1 : -1);
+
 							} else if (this.robotAngle === 90) {
 								this.robotY -= (positive ? 1 : -1);
+
 							} else if (this.robotAngle === 180) {
 								this.robotX -= (positive ? 1 : -1);
+
 							} else if (this.robotAngle === 270) {
 								this.robotY += (positive ? 1 : -1);
 							}
+
 							if (this.state.blockGoal[this.robotX][this.robotY]) {
+
 								var goal = {x: this.robotX, y: this.robotY, amount: i+1};
 								if (goals === null) {
 									goals = [goal];
@@ -64,6 +83,9 @@ module.exports = function(robot) {
 					}
 				}
 			} finally {
+
+        console.log("fromX", fromX, "fromY", fromY, "robotX", this.robotX, "robotY", this.robotY);
+        console.log("robotAngle", this.robotAngle, "goals", goals);
 				this.calls.push({name: 'insertLine', args: [fromX, fromY, this.robotX, this.robotY, this.robotAngle, goals]});
 			}
 		},
@@ -128,6 +150,7 @@ module.exports = function(robot) {
 		},
 
 		drive: function() {
+      alert("drive");
 			return this.primitiveDrive('drive', arguments, true);
 		},
 
