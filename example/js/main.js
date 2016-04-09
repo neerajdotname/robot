@@ -20,13 +20,16 @@ var makeExample = function(nr, code, options) {
 	update();
 };
 
-var text =  'robot.drive(1)\n' +
-            'robot.turnRight()\n' +
-            'robot.drive(2)\n'+
-            'robot.turnLeft()\n' +
-            'robot.drive(2)\n'+
-            'robot.turnLeft()\n' +
-            'robot.drive(3)' ;
+var text =  'robot.drive(1)\n';
+
+//NEERAJ
+//var text =  'robot.drive(1)\n' +
+            //'robot.turnRight()\n' +
+            //'robot.drive(2)\n'+
+            //'robot.turnLeft()\n' +
+            //'robot.drive(2)\n'+
+            //'robot.turnLeft()\n' +
+            //'robot.drive(3)' ;
 
 var state = { "columns": 5,
               "rows":5,
@@ -137,7 +140,8 @@ exampleTop.setProgram(function (robot) {
 			break;
 		}
 
-		robot.drive(1);
+    //NEERAJ
+		//robot.drive(1);
 	}
 });
 
