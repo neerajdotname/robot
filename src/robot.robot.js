@@ -6,6 +6,7 @@ module.exports = function(robot) {
 	robot.Robot = function() { return this.init.apply(this, arguments); };
 	robot.Robot.prototype = {
 		init: function(state) {
+      console.log("init");
 			this.calls = [];
 			this.state = JSON.parse(state);
 			this.robotX = this.state.initialX;
@@ -15,8 +16,9 @@ module.exports = function(robot) {
 		},
 
 		primitiveDrive: function(name, args, forward) {
+      console.log("primitiveDrive");
+
       console.log("name", name);
-      console.log("args", args);
       console.log("forward", forward);
 			var goals = null, fromX = this.robotX, fromY = this.robotY;
 
@@ -91,7 +93,10 @@ module.exports = function(robot) {
 		},
 
 		primitiveTurn: function(name, args, clockwise) {
+      console.log("primitiveTurn");
+
 			var fromAngle = this.robotAngle, amount = 90;
+
 			if (args[0] !== undefined) {
 				amount = args[0];
 			}
@@ -106,6 +111,7 @@ module.exports = function(robot) {
 				if (clockwise) amount = -amount;
 				this.robotAngle = ((this.robotAngle+amount)%360+360)%360;
 			}
+
 			this.calls.push({name: 'insertPoint', args: [this.robotX, this.robotY, fromAngle, amount]});
 		},
 
@@ -140,6 +146,7 @@ module.exports = function(robot) {
 		},
 
 		primitiveDetectWall: function(name, args) {
+      console.log("primitiveDetectWall");
 			var wall = this.primitiveIsWall(this.robotX, this.robotY, this.robotAngle);
 			this.calls.push({name: 'insertDetectWall', args: [this.robotX, this.robotY, this.robotAngle, wall]});
 			return wall;
@@ -171,10 +178,12 @@ module.exports = function(robot) {
 		},
 
 		getCalls: function() {
+      console.log("getCalls");
 			return this.calls;
 		},
 
 		play: function(applet) {
+      console.log("play");
 			applet.clear();
 			for (var i=0; i<this.calls.length; i++) {
 				applet[this.calls[i].name].apply(applet, this.calls[i].args);

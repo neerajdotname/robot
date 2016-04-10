@@ -117,34 +117,34 @@ var state = {   "columns":8,
 
 var _state = JSON.stringify(state);
 
-var exampleTop = new window.jsdares.robot.ProgramApplet( $('.robot-example-top'), { readOnly: false, blockSize: 64, state: _state });
+//var exampleTop = new window.jsdares.robot.ProgramApplet( $('.robot-example-top'), { readOnly: false, blockSize: 64, state: _state });
 
-exampleTop.setProgram(function (robot) {
-	for (var i=0; i<400; i++) {
+//exampleTop.setProgram(function (robot) {
+	//for (var i=0; i<400; i++) {
 
-		if (robot.detectGoal()) break;
+		//if (robot.detectGoal()) break;
 
-		robot.turnLeft();
+		//robot.turnLeft();
 
-		if (robot.detectWall()) {
-			robot.turnRight();
-		}
+		//if (robot.detectWall()) {
+			//robot.turnRight();
+		//}
 
-		if (robot.detectWall()) {
-			robot.turnRight();
-		}
+		//if (robot.detectWall()) {
+			//robot.turnRight();
+		//}
 
-		if (robot.detectWall()) {
-			robot.turnRight();
-		}
+		//if (robot.detectWall()) {
+			//robot.turnRight();
+		//}
 
-		if (robot.detectWall()) {
-			break;
-		}
+		//if (robot.detectWall()) {
+			//break;
+		//}
 
-    //NEERAJ
-		//robot.drive(1);
-	}
-});
+    ////NEERAJ
+		////robot.drive(1);
+	//}
+//});
 
 
