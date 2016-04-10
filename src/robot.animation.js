@@ -13,7 +13,7 @@ module.exports = function(robot) {
 			if (this.blockSize !== 64) {
 				robot.setCss3(this.$robot[0], 'transform', 'scale(' + this.scale + ')');
 			}
-			
+
 			this.rotationFactor = 0.75;
 			this.detectWallLength = 40000;
 			this.animationQueue = [];
@@ -57,6 +57,8 @@ module.exports = function(robot) {
 		},
 
 		play: function(start, end) {
+      console.log("robot.animation play");
+      return;
 			if (start >= 0 && this.animationQueue.length > 0) {
 				if (end > start) {
 					this.lastNumber = end;

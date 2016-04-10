@@ -6,7 +6,6 @@ module.exports = function(robot) {
 	robot.Robot = function() { return this.init.apply(this, arguments); };
 	robot.Robot.prototype = {
 		init: function(state) {
-      console.log("init");
 			this.calls = [];
 			this.state = JSON.parse(state);
 			this.robotX = this.state.initialX;
@@ -16,10 +15,8 @@ module.exports = function(robot) {
 		},
 
 		primitiveDrive: function(name, args, forward) {
-      console.log("primitiveDrive");
+      console.log("robot.js primitiveDrive");
 
-      console.log("name", name);
-      console.log("forward", forward);
 			var goals = null, fromX = this.robotX, fromY = this.robotY;
 
 			try {
@@ -158,6 +155,7 @@ module.exports = function(robot) {
 		},
 
 		drive: function() {
+      console.log("robot.js drive");
 			return this.primitiveDrive('drive', arguments, true);
 		},
 
@@ -183,7 +181,7 @@ module.exports = function(robot) {
 		},
 
 		play: function(applet) {
-      console.log("play");
+      console.log("robot.js play");
 			applet.clear();
 			for (var i=0; i<this.calls.length; i++) {
 				var _name = this.calls[i].name;
@@ -192,7 +190,7 @@ module.exports = function(robot) {
 
 				applet[_name].apply(applet, _temp);
 			}
-      console.log("invoking play");
+      console.log("applet play");
 			applet.play();
 		}
 	};
