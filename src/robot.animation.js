@@ -58,7 +58,7 @@ module.exports = function(robot) {
 
 		play: function(start, end) {
       console.log("robot.animation play");
-      return;
+      return; //NEERAJ
 			if (start >= 0 && this.animationQueue.length > 0) {
 				if (end > start) {
 					this.lastNumber = end;
