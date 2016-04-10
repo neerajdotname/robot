@@ -88,6 +88,7 @@ module.exports = function(robot) {
 
         console.log("fromX", fromX, "fromY", fromY, "robotX", this.robotX, "robotY", this.robotY);
         console.log("robotAngle", this.robotAngle, "goals", goals);
+        console.log("call.push to push name insertLine");
 				this.calls.push({name: 'insertLine', args: [fromX, fromY, this.robotX, this.robotY, this.robotAngle, goals]});
 			}
 		},
@@ -157,7 +158,6 @@ module.exports = function(robot) {
 		},
 
 		drive: function() {
-      alert("drive");
 			return this.primitiveDrive('drive', arguments, true);
 		},
 
@@ -186,8 +186,13 @@ module.exports = function(robot) {
       console.log("play");
 			applet.clear();
 			for (var i=0; i<this.calls.length; i++) {
-				applet[this.calls[i].name].apply(applet, this.calls[i].args);
+				var _name = this.calls[i].name;
+				var _temp = this.calls[i].args;
+        console.log("applying to applet:", _name, _temp);
+
+				applet[_name].apply(applet, _temp);
 			}
+      console.log("invoking play");
 			applet.play();
 		}
 	};
